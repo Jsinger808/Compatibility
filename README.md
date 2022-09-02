@@ -2,7 +2,7 @@
 
 ## Steps to Run
 - Download files off of GitHub and run application on an IDE (preferably IntelliJ)
-- Start Postman and make a POST request to "http://localhost:8080/api/v1/compatibility/candidate"
+- Start Postman and make a POST request to "http://localhost:8080/api/v1/compatibility/evaluate"
 
 ## Assumptions
 - Higher the score the better

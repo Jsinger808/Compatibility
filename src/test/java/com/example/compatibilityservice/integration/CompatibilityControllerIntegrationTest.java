@@ -120,7 +120,7 @@ public class CompatibilityControllerIntegrationTest {
                 applicant2DTO.getAttributes().getEndurance() * priorityMap.get("Endurance") +
                 applicant2DTO.getAttributes().getSpicyFoodTolerance() * priorityMap.get("SpicyFoodTolerance")) / 40.0;
 
-        mockMvc.perform(post("/api/v1/compatibility/candidate")
+        mockMvc.perform(post("/api/v1/compatibility/evaluate")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(expected))
                         .accept(MediaType.APPLICATION_JSON))
@@ -155,7 +155,7 @@ public class CompatibilityControllerIntegrationTest {
 
         TeamMemberApplicantDTO expected = new TeamMemberApplicantDTO(teamList, applicantList);
 
-        mockMvc.perform(post("/api/v1/compatibility/candidate")
+        mockMvc.perform(post("/api/v1/compatibility/evaluate")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(expected))
                         .accept(MediaType.APPLICATION_JSON))

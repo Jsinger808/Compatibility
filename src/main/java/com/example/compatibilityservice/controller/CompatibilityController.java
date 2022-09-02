@@ -17,9 +17,9 @@ public class CompatibilityController {
         this.applicantService = applicantService;
     }
 
-//USER Table
+//Team Members & Applicants
 
-    @PostMapping("/candidate")
+    @PostMapping("/evaluate")
     public ScoredApplicantListDTO evaluateCandidates(@RequestBody TeamMemberApplicantDTO teamMemberApplicantDTO) {
         return applicantService.evaluateCandidates(teamMemberApplicantDTO);
     }

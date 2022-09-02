@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compatibility Predictor
 
 ## Steps to Run
@@ -18,4 +19,6 @@
 - If DB exists, create APIs to update and delete (assuming applicants can reapply and that their attributes have improved/degraded since)
 - Figure out how to throw custom exceptions for invalid parameters while still allowing teams object in JSON input file
 
+=======
+>>>>>>> 740a75ab4834b213dda522542c1db965ad58c1b9
 

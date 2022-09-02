@@ -18,6 +18,7 @@ public class Config implements InitializingBean {
         configureJacksonToFailOnUnknownProperties();
     }
 
+    //Changes Spring Boot's default exception handling on invalid JSON payloads
     private void configureJacksonToFailOnUnknownProperties() {
         MappingJackson2HttpMessageConverter httpMessageConverter = converter.getMessageConverters().stream()
                 .filter(mc -> mc.getClass()

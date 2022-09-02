@@ -21,7 +21,7 @@
 ## Logic Behind It
 - Spring Boot rejects JSON payloads with invalid parameters (missing or bad data types) by throwing custom InvalidParameters exception
 - CompatibilityController takes in user's JSON file
-- CompatibilityController deparses JSON file and calls CandidateService method "evaluateCandidates" passing in TeamMemberApplicantDTO
+- CompatibilityController parses JSON payload and calls CandidateService method "evaluateCandidates" passing in TeamMemberApplicantDTO
 - evaluateCandidates throws custom InvalidScore Exception if scores are incorrect (less than 0 or greater than 10) or null
 - evaluateCandidates adds total attribute scores from all team members
 - evaluateCandidates uses a HashMap and Priority Queue to assign top two attribute scores with a positive percentage multiplier and the bottom two attribute scores
@@ -30,7 +30,7 @@ with a negative one
 - evaluateCandidates pulls info (name, attributes) from each applicant in the list
 - evaluateCandidates throws InvalidScore exception if scores are incorrect (less than 0 or greater than 10) or null
 - evaluateCandidates multiplies each applicant's attributes with its percentage multiplier, stored in priorityValues.properties, and creates a weighted overall score
-- evaluateCandidate adds each applicant and their weighted score to a temporary list before setting it in the response DTO (scoredApplicantListDTO)
+- evaluateCandidates adds each applicant and their weighted score to a temporary list and sets it in the response DTO (scoredApplicantListDTO)
 - CompatibilityController stringifies response DTO and returns JSON payload to user
 
 ## Ways to Improve

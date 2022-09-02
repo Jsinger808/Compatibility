@@ -8,7 +8,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.zip.CheckedOutputStream;
 
 @Service
 @PropertySource(ignoreResourceNotFound = true, value = "classpath:priorityValues.properties")
@@ -31,13 +30,13 @@ public class ApplicantService {
         ScoredApplicantListDTO scoredApplicantListDTO = new ScoredApplicantListDTO();
         List<ScoredApplicantDTO> list = new ArrayList<>();
 
-        HashMap<String, Double>priorityMap = new LinkedHashMap<>();
+        HashMap<String, Double> priorityMap = new LinkedHashMap<>();
         priorityMap.put("Intelligence", 0.0);
         priorityMap.put("Endurance", 0.0);
         priorityMap.put("Strength", 0.0);
         priorityMap.put("SpicyFoodTolerance", 0.0);
 
-        Double priorityArray[] = new Double[] {firstPriority, secondPriority, thirdPriority, fourthPriority};
+        Double priorityArray[] = new Double[]{firstPriority, secondPriority, thirdPriority, fourthPriority};
 
         for (TeamMemberDTO teamMemberDTO : teamMemberApplicantDTO.getTeam()) {
 
@@ -64,8 +63,8 @@ public class ApplicantService {
         //Sets Max attribute to first priority, second Max attribute to second priority, etc....
         for (int i = 0; i < 4; ++i) {
             Double value = priorityQueue.poll();
-            for(String key: priorityMap.keySet()) {
-                if(priorityMap.get(key).equals(value)) {
+            for (String key : priorityMap.keySet()) {
+                if (priorityMap.get(key).equals(value)) {
                     priorityMap.put(key, priorityArray[i]);
                     //Prevents attributes with the same total score to get the same priority value
                     //In case of tie, prioritizes left to right: Intelligence, Endurance, Strength, SpicyFoodTolerance
@@ -98,7 +97,7 @@ public class ApplicantService {
         return scoredApplicantListDTO;
     }
 
-    public void checkForInvalidScores (Integer intelligence, Integer strength, Integer endurance, Integer spicyFoodTolerance) throws InvalidScoreException {
+    public void checkForInvalidScores(Integer intelligence, Integer strength, Integer endurance, Integer spicyFoodTolerance) throws InvalidScoreException {
         if ((intelligence == null || intelligence > 10 || intelligence < 0) ||
                 (strength == null || strength > 10 || strength < 0) ||
                 (endurance == null || endurance > 10 || endurance < 0) ||

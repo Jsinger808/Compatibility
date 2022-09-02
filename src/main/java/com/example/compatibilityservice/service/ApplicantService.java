@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-@PropertySource(ignoreResourceNotFound = true, value = "classpath:priorityValues.properties")
+@PropertySource(ignoreResourceNotFound = true, value = "classpath:priorityWeight.properties")
 public class ApplicantService {
 
     @Value("${firstPriority}")
@@ -38,6 +38,7 @@ public class ApplicantService {
 
         Double priorityArray[] = new Double[]{firstPriority, secondPriority, thirdPriority, fourthPriority};
 
+        //Pulls out team's total attributes and adds them into a Hashmap
         for (TeamMemberDTO teamMemberDTO : teamMemberApplicantDTO.getTeam()) {
 
             Integer teamIntelligence = teamMemberDTO.getAttributes().getIntelligence();
@@ -54,7 +55,7 @@ public class ApplicantService {
             priorityMap.put("SpicyFoodTolerance", priorityMap.get("SpicyFoodTolerance") + teamSpicyFoodTolerance);
         }
 
-        //Creates a reverse priority queue to sort team's total attributes to pop off Max attribute first
+        //Creates a reverse priority queue to sort team's total attributes to poll Max attribute first
         PriorityQueue<Double> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
         for (Double value : priorityMap.values()) {
             priorityQueue.add(value);
@@ -66,8 +67,8 @@ public class ApplicantService {
             for (String key : priorityMap.keySet()) {
                 if (priorityMap.get(key).equals(value)) {
                     priorityMap.put(key, priorityArray[i]);
-                    //Prevents attributes with the same total score to get the same priority value
-                    //In case of tie, prioritizes left to right: Intelligence, Endurance, Strength, SpicyFoodTolerance
+                    //Prevents attributes with the same total score to get the same priority weight
+                    //In rare case of tie, prioritizes left to right: Intelligence, Endurance, Strength, SpicyFoodTolerance
                     break;
                 }
             }
@@ -85,7 +86,7 @@ public class ApplicantService {
             //Throws invalid scores
             checkForInvalidScores(applicantIntelligence, applicantStrength, applicantEndurance, applicantSpicyFoodTolerance);
 
-            //Finds average of four digits
+            //Finds average of each applicant's four attributes multiplied by their respective priority weights
             Double totalScore = applicantIntelligence * priorityMap.get("Intelligence") +
                     applicantStrength * priorityMap.get("Strength") +
                     applicantEndurance * priorityMap.get("Endurance") +

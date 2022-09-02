@@ -29,7 +29,7 @@ with a negative one
 - In case of ties, prioritize attributes that were first added to HashMap (Intelligence, Endurance, Strength, SpicyFoodTolerance)
 - evaluateCandidates pulls info (name, attributes) from each applicant in the list
 - evaluateCandidates throws InvalidScore exception if scores are incorrect (less than 0 or greater than 10) or null
-- evaluateCandidates multiplies each applicant's attributes with its percentage multiplier, stored in priorityValues.properties, and creates a weighted overall score
+- evaluateCandidates multiplies each applicant's attributes with its percentage multiplier, stored in priorityWeight.properties, and creates a weighted overall score
 - evaluateCandidates adds each applicant and their weighted score to a temporary list and sets it in the response DTO (scoredApplicantListDTO)
 - CompatibilityController stringifies response DTO and returns JSON payload to user
 

@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CompatibilityServiceApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @EnableAutoConfiguration
-@PropertySource(ignoreResourceNotFound = true, value = "classpath:priorityValues.properties")
+@PropertySource(ignoreResourceNotFound = true, value = "classpath:priorityWeight.properties")
 public class CompatibilityControllerIntegrationTest {
 
     @Autowired

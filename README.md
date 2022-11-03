@@ -33,6 +33,8 @@ with a negative one
 - evaluateCandidates adds each applicant and their weighted score to a temporary list and sets it in the response DTO (scoredApplicantListDTO)
 - CompatibilityController stringifies response DTO and returns JSON payload to user
 
+![image](https://user-images.githubusercontent.com/96458801/199839859-1d0dd13e-fe5b-411a-9f2d-bc8c0bba16ef.png)
+
 ## Ways to Improve
 - Set up an H2 in-memory DB for storing applicants
 - If DB exists, create APIs to update and delete (assuming applicants can reapply and that their attributes have improved/degraded since)
